@@ -1,6 +1,6 @@
 <!-- 
 /*
- *  Description :  매니저 관리 페이지
+ *  Description :  로그인 페이지
  *  Created : 2016-06-26
  *  Author : 김준혁
  *  
@@ -8,8 +8,7 @@
  */
  -->
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
@@ -52,19 +51,10 @@
 </script>
 <!-- Header -->
 <jsp:include page="layout/Header.jsp" />
-<c:choose>
-	<c:when test="${param.check == 'member'}">
-		<!-- Member -->
-		<jsp:include page="manager/Member_Management.jsp" />
-	</c:when>
-	<c:when test="${param.check == 'store'}">
-		<%-- Store --%>
-		<jsp:include page="manager/Store_Management.jsp" />
-	</c:when>
-	<c:when test="${param.check == 'menu'}">
-		<%-- Menu --%>
-		<jsp:include page="manager/Menu_Management.jsp" />
-	</c:when>
-</c:choose>
+
+<div class="container">
+	<h1>회원 가입이 완료되었습니다. <i class="fa fa-check-circle" aria-hidden="true"></i></h1>
+</div>
+
 <!-- Footer -->
 <jsp:include page="layout/Footer.jsp" />

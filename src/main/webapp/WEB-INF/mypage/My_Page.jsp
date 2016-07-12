@@ -67,6 +67,65 @@
 		$("#Show-Detail-Purchase-List-Modal-Hide-Btn").click(function(){
 		    $("#Show-Detail-Purchase-List").hide();
 		  });
+		//현재 비밀번호 확인 버튼 클릭시 새로운 비밀번호 변경 div 호출
+		$("#Member-Current-Password-Confirm-Btn").click(function(){
+			var password = $("#Current-Password").val();
+			if(password == ""){
+				alert("비밀번호가 입력되지 않았습니다.");
+				$("#Current-Password").focus();
+				return false;
+			}
+			$("#Member-Current-Password-Div").hide();
+			$("#Member-New-Password-Div").show();
+		});
+		//비밀번호 변경 취소 버튼 클릭시 현재 비밀번호 입력 div 호출
+		$("#Member-New-Password-Cancel-Btn").click(function(){
+			$("#Member-Current-Password-Div").show();
+			$("#Member-New-Password-Div").hide();
+		});
+		//정규식을 이용한 비밀번호 로직 검사, 숫자와 영문 조합 10~15자리
+		$("#New-Password-Input").keyup(function(){
+			var passwordRules = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+			var password = $(this).val();
+			var checkNumber = password.search(/[0-9]/g);
+			var checkEnglish = password.search(/[a-z]/ig);
+			if(!/^[a-zA-Z0-9]{10,15}$/.test(password)){
+				$(this).css("border", "1px solid red");
+				$("#New-Password-Input-Span").text('숫자와 영문자 조합 10~15자리');
+				$("#New-Password-Input-Span").css("color", "red");
+				return false;
+			}
+			if(checkNumber <0 || checkEnglish <0){
+				$(this).css("border", "1px solid red");
+				$("#New-Password-Input-Span").text("숫자와 영문자를 혼용");
+				$("#New-Password-Input-Span").css("color", "red");
+				return false;
+			}
+			if(/(\w)\1\1\1/.test(password)){
+				$(this).css("border", "1px solid red");
+				$("#New-Password-Input-Span").text('444같은 문자를 4번 이상 사용불가');
+				$("#New-Password-Input-Span").css("color", "red");
+				return false;
+			}
+			$(this).css("border", "1px solid green");
+			$("#New-Password-Input-Span").text('사용가능');
+			$("#New-Password-Input-Span").css("color", "green");
+		});
+		//새로운 비밀번호 확인
+		$("#New-Password-Ck-Input").keyup(function(){
+			var newPassword = $("#New-Password-Input").val();
+			var newPasswordCk = $(this).val();
+			
+			if(newPassword != newPasswordCk){
+				$(this).css("border", "1px solid red");
+				$("#New-Password-Input-Ck-Span").text('일치하지 않습니다');
+				$("#New-Password-Input-Ck-Span").css("color", "red");
+				return false;
+			}
+			$(this).css("border", "1px solid green");
+			$("#New-Password-Input-Ck-Span").text('비밀번호 일치');
+			$("#New-Password-Input-Ck-Span").css("color", "green");
+		});
 	})
 </script>
 
@@ -82,7 +141,7 @@
 </style>
 
 <!-- Header -->
-<jsp:include page="layout/Header.jsp" />
+<jsp:include page="/WEB-INF/layout/Header.jsp" />
 <div class="row">
 	<div class="col-lg-4" style="display: inline-block;">
 		<!-- Member Information -->
@@ -136,15 +195,49 @@
 				<div class="row">
 					<div class="col col-xs-6">
 						<div class="panel-title" style="display:inline-block; margin-right: 10px">비밀번호 변경</div> 
-							<div style="display:inline-block;">
-								<a id="Show-Change-Member-Password-Panel-Body-Btn" class="btn btn-success"><em class="fa fa-plus-circle" aria-hidden="true"></em></a>
-							</div>
+						<div style="display:inline-block;">
+							<a id="Show-Change-Member-Password-Panel-Body-Btn" class="btn btn-success"><em class="fa fa-plus-circle" aria-hidden="true"></em></a>
 						</div>
 					</div>
 				</div>
+			</div>
 				<div id="Change-Member-Password-Panel-Body" class="panel-body" style="display:none">
 					<div class="row">
-						
+						<form id="My-Page-ChangePassword-Inf-Form" class="form-horizontal">
+							<!-- 현재 비밀번호 -->
+							<div id="Member-Current-Password-Div" class="form-group">
+								<label for="Current-Password" class="col-sm-3 control-label">현재 비밀번호</label>
+								<div class="col-sm-6" style="display:inline-block;">
+									<input id="Current-Password" type="password" class="form-control">
+								</div>
+								<div style="display:inline-block;">
+									<button id="Member-Current-Password-Confirm-Btn" type="button" class="btn btn-default">확인</button>
+								</div>
+							</div>
+							<!-- 새로 입력 할 비밀번호 div -->
+							<div id="Member-New-Password-Div" style="display:none">
+								<!-- 새로운 비밀번호 -->
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-3 control-label">새로운 비밀번호</label>
+									<div class="col-sm-6">
+										<input id="New-Password-Input" type="password" class="form-control"><span id="New-Password-Input-Span"></span>
+									</div>
+								</div>
+								<!-- 새로운 비밀번호 확인 -->
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-3 control-label">비밀번호 확인</label>
+									<div class="col-sm-6">
+										<input id="New-Password-Ck-Input" type="password" class="form-control"><span id="New-Password-Input-Ck-Span"></span>
+									</div>
+								</div>
+								<div class="form-group">
+									 <div class="col-sm-offset-3 col-sm-6">
+										<button id="Member-New-Password-Confirm-Btn" type="button" class="btn btn-default">비밀번호 변경</button>&nbsp;&nbsp;
+										<button id="Member-New-Password-Cancel-Btn" type="button" class="btn btn-primary">취소</button>
+									 </div>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 	 		</div>
@@ -243,4 +336,4 @@
 <!-- Meber_Purchase_List_Modal -->
 <jsp:include page="Member_Purchase_List_Modal.jsp" />
 <!-- Footer -->
-<jsp:include page="layout/Footer.jsp" />
+<jsp:include page="/WEB-INF/layout/Footer.jsp" />

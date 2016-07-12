@@ -7,7 +7,7 @@
 					<div class="footer-col col-md-4">
 						<h3>Location</h3>
 						<p>
-							3481 Melrose Place<br>Beverly Hills, CA 90210
+							서울특별시 종로구 종로 54
 						</p>
 					</div>
 					<div class="footer-col col-md-4">

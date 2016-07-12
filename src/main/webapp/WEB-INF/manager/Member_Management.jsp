@@ -77,22 +77,25 @@
 
 								}
 							});
-					if(delete_count != 0){
-					if (confirm("체크 된 항목들을 정말 삭제하시겠습니까?")) {
+					if (delete_count != 0) {
+						if (confirm("체크 된 항목들을 정말 삭제하시겠습니까?")) {
 
-					}
-					}
-					else{
+						}
+					} else {
 						alert("선택된 항목이 없습니다.");
 					}
 				});
 	});
 </script>
-
-<div id="Member-Management-Div" class="container div-fade"
-	style="display: none; padding-top: 0px; color: black; margin-top: 100px">
-	<div class="row">
-		<div class="col-md-12 col-md-offset-1">
+<style>
+#Member-Search-Btn {
+	cursor: pointer;
+}
+</style>
+<div id="Member-Management-Div" class="div-fade"
+	style="padding-top: 0px; color: black; margin-top: 100px">
+	<div>
+		<div>
 			<div class="panel panel-default panel-table">
 				<div class="panel-heading">
 					<div class="row">
@@ -103,6 +106,21 @@
 					</div>
 				</div>
 				<div class="panel-body">
+					<!-- 회원 검색 -->
+					<form class="form-inline">
+						<div class="form-group">
+							<div class="input-group">
+								<!-- 입력  -->
+								<input type="text" class="form-control" id="exampleInputAmount"
+									placeholder="회원정보 입력...">
+								<!-- 검색 버튼 -->
+								<div id="Member-Search-Btn" class="input-group-addon"
+									style="background-color: white; color: green">
+									<i class="fa fa-search"></i>
+								</div>
+							</div>
+						</div>
+					</form>
 					<!-- Member-Table -->
 					<table id="Member-Table"
 						class="table table-striped table-bordered table-list">
@@ -142,7 +160,7 @@
 								<td>123123johndoe@example.com</td>
 								<td>010-1234-1234</td>
 								<td>일반</td>
-								<td align="center"></td>
+								<td class="text-center"><a href="#">상세보기</a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -168,5 +186,220 @@
 			</div>
 		</div>
 	</div>
-
 </div>
+<!-- 구매 내역 -->
+<div class="col-md-4" style="padding-top: 0px; color: black;">
+	<div class="panel panel-default panel-table">
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col col-xs-6">
+					<!-- Title -->
+					<h3 class="panel-title">구매 내역</h3>
+				</div>
+			</div>
+		</div>
+		<div class="panel-body">
+			<form class="form-inline">
+				<div class="form-group">
+					<div class="input-group">
+						<!-- 입력  -->
+						<input type="text" class="form-control" id="exampleInputAmount"
+							placeholder="YYYY/MM/DD">
+						<!-- 검색 버튼 -->
+						<div id="Member-Search-Btn" class="input-group-addon"
+							style="background-color: white; color: green">
+							<i class="fa fa-search"></i>
+						</div>
+					</div>
+				</div>
+			</form>
+			<!-- Member-Table -->
+			<table id="Member-Table"
+				class="table table-striped table-bordered table-list"
+				style="font-size: 8pt">
+				<!-- Member-Table-Header -->
+				<thead>
+					<tr>
+						<th>구매 날짜</th>
+						<th>구매 상품</th>
+						<th>매장명</th>
+						<th>결제 방법</th>
+						<th>결제 금액</th>
+					</tr>
+				</thead>
+				<!-- Member-Table-Body -->
+				<tbody>
+					<tr>
+						<td>2016년 6월 30일</td>
+						<td><a href="#">상세보기</a></td>
+						<td>종각점</td>
+						<td>신용 카드</td>
+						<td>13,000원</td>
+					</tr>
+				</tbody>
+
+			</table>
+			<!-- Pagination -->
+			<div class="col-sm-offset-4">
+				<nav>
+					<ul class="pagination pagination-sm">
+						<li><a href="#" aria-label="Previous"> <span
+								aria-hidden="true">&laquo;</span>
+						</a></li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#" aria-label="Next"> <span
+								aria-hidden="true">&raquo;</span>
+						</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 미팅룸 예약 내역 -->
+<div class="col-md-4" style="padding-top: 0px; color: black;">
+	<div class="panel panel-default panel-table">
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col col-xs-6">
+					<!-- Title -->
+					<h3 class="panel-title">미팅룸 예약 내역</h3>
+				</div>
+			</div>
+		</div>
+		<div class="panel-body">
+			<form class="form-inline">
+				<div class="form-group">
+					<div class="input-group">
+						<!-- 입력  -->
+						<input type="text" class="form-control" id="exampleInputAmount"
+							placeholder="YYYY/MM/DD">
+						<!-- 검색 버튼 -->
+						<div id="Member-Search-Btn" class="input-group-addon"
+							style="background-color: white; color: green">
+							<i class="fa fa-search"></i>
+						</div>
+					</div>
+				</div>
+			</form>
+			<!-- Member-Table -->
+			<table id="Member-Table"
+				class="table table-striped table-bordered table-list"
+				style="font-size: 8pt">
+				<!-- Member-Table-Header -->
+				<thead>
+					<tr>
+						<th>구매 날짜</th>
+						<th>예약 날짜</th>
+						<th>매장명</th>
+						<th>미팅룸 번호</th>
+						<th>예약 시간</th>
+					</tr>
+				</thead>
+				<!-- Member-Table-Body -->
+				<tbody>
+					<tr>
+						<td>2016년 6월 30일</td>
+						<td>2016년 7월 3일</td>
+						<td>종각점</td>
+						<td>3번</td>
+						<td>10:00~12:00</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- Pagination -->
+			<div class="col-sm-offset-4">
+				<nav>
+					<ul class="pagination pagination-sm">
+						<li><a href="#" aria-label="Previous"> <span
+								aria-hidden="true">&laquo;</span>
+						</a></li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#" aria-label="Next"> <span
+								aria-hidden="true">&raquo;</span>
+						</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 게시판 -->
+<div class="col-md-4" style="padding-top: 0px; color: black;">
+	<div class="panel panel-default panel-table">
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col col-xs-6">
+					<!-- Title -->
+					<h3 class="panel-title">게시판 보기</h3>
+				</div>
+			</div>
+		</div>
+		<div class="panel-body">
+			<form class="form-inline">
+				<div class="form-group">
+					<div class="input-group">
+						<!-- 입력  -->
+						<input type="text" class="form-control" id="exampleInputAmount"
+							placeholder="YYYY/MM/DD">
+						<!-- 검색 버튼 -->
+						<div id="Member-Search-Btn" class="input-group-addon"
+							style="background-color: white; color: green">
+							<i class="fa fa-search"></i>
+						</div>
+					</div>
+				</div>
+			</form>
+			<!-- Member-Table -->
+			<table id="Member-Table"
+				class="table table-striped table-bordered table-list"
+				style="font-size: 8pt">
+				<!-- Member-Table-Header -->
+				<thead>
+					<tr>
+						<th>작성 날짜</th>
+						<th>제목</th>
+						<th>내용</th>
+						<th>카테고리</th>
+					</tr>
+				</thead>
+				<!-- Member-Table-Body -->
+				<tbody>
+					<tr>
+						<td>2016년 6월 30일</td>
+						<td>테스트</td>
+						<td><a href="#">상세보기</a></td>
+						<td>고객의 소리</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- Pagination -->
+			<div class="col-sm-offset-4">
+				<nav>
+					<ul class="pagination pagination-sm">
+						<li><a href="#" aria-label="Previous"> <span
+								aria-hidden="true">&laquo;</span>
+						</a></li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#" aria-label="Next"> <span
+								aria-hidden="true">&raquo;</span>
+						</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+

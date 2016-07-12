@@ -162,19 +162,17 @@
 }
 </style>
 
-<div class="container" style="margin-top: 100px">
-	<div class="row">
-		<div class="col-md-12 col-md-offset-1">
-			<div class="panel panel-default panel-table">
+<div style="margin-top: 100px">
+	<div class="col-md-5" style="display:inline-block;">
+		<div class="panel panel-default panel-table">
 				<div class="panel-heading">
 					<div class="row">
-						<div class="col col-xs-6">
+						<div>
 							<h3 class="panel-title">매장 관리</h3>
 						</div>
 					</div>
 				</div>
 				<div class="panel-body">
-					<!-- Store Insert Head-->
 					<div id="Store-Insert-Div-Header">
 						<p>
 							<strong>새로운 매장을 추가하세요</strong>&nbsp;&nbsp;<a
@@ -313,6 +311,35 @@
 							</div>
 						</form>
 					</div>
+				</div>
+		</div>
+	</div>
+	<div style="display:inline-block;">
+		<div>
+			<div class="panel panel-default panel-table">
+				<div class="panel-heading">
+					<div class="row">
+						<div>
+							<h3 class="panel-title">상세 관리</h3>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<!-- 매장 검색 -->
+					<form class="form-inline">
+						<div class="form-group">
+							<div class="input-group">
+								<!-- 입력  -->
+								<input type="text" class="form-control" id="exampleInputAmount"
+									placeholder="매장정보 입력...">
+								<!-- 검색 버튼 -->
+								<div id="Member-Search-Btn" class="input-group-addon"
+									style="background-color: white; color: green">
+									<i class="fa fa-search"></i>
+								</div>
+							</div>
+						</div>
+					</form>
 					<table id="Store-Table"
 						class="table table-striped table-bordered table-list">
 						<thead>
@@ -375,7 +402,7 @@
 						</tbody>
 					</table>
 					<!-- Pagination -->
-					<div class="col-sm-offset-5">
+					<div class="col-sm-offset-4">
 						<nav>
 							<ul class="pagination">
 								<li><a href="#" aria-label="Previous"> <span
